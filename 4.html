@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-12-06 수 17:22 -->
+<!-- 2023-12-06 수 17:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>KIM's notebook</title>
+<title>확장자가 생략된 파일 이름 filename with the extension omitted unzip이 압축방법 99가 없다는 에러가 발생 시.</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="KIM Hyeok" />
+<meta name="author" content="Your name" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -193,7 +193,6 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel='stylesheet' type='text/css' href='css/main.css'/>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -242,36 +241,50 @@ for the JavaScript code in this tag.
 </script>
 </head>
 <body>
-<div id="org-div-home-and-up">
- <a accesskey="h" href=""> UP </a>
- |
- <a accesskey="H" href="index.html"> HOME </a>
-</div><div id="content">
-<h1 class="title">KIM's notebook</h1>
-<ul class="org-ul">
-<li><a href="2.html">2</a></li>
-<li><a href="1.html">1</a></li>
-<li><a href="3.html">확장자가 생략된 파일 이름 filename with the extension omitted TIPS</a></li>
-<li><a href="4.html">확장자가 생략된 파일 이름 filename with the extension omitted unzip이 압축방법 99가 없다는 에러가 발생 시.</a></li>
-<li><a href="level-1.html">확장자가 생략된 파일 이름 filename with the extension omitted My Title</a></li>
-</ul>
+<div id="content">
+<h1 class="title">확장자가 생략된 파일 이름 filename with the extension omitted unzip이 압축방법 99가 없다는 에러가 발생 시.</h1>
+<p>
+다음과 같은 에러가 발생하는 경우가 있다. 
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">~$  unzip -P1234 archive.zip
+....
+  Skipping: filename.txt  unsupported compression method 99
+....
+</pre>
+</div>
+<p>
+Ubuntu 기본 zip 프로그램은 아주 기본적인 프로그램이기 때문에, 지원하지 않는 알고리즘이 있다. 
+</p>
+
+<p>
+간단히 해결할 수 있다. 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">~$ sudo apt-get install p7zip  
+~$ 7z x -p1234 archive.zip
+</pre>
+</div>
+
+<p>
+보통의 리눅스 프로그램들은, argument처리에 있어서, getopt.h를 불러와 사용한다. 그런 친구들은 -p 1234나 -p1234나 같은 결과를 도출한다. 
+</p>
+
+<p>
+그런데 p7zip은 보안프로그램이다보니, dash 옵션에 대해서 아주 엄격하게 처리한다. -p1234는 압축이 풀리고 -p 1234는 풀리지 않는다. 
+</p>
+
+<p>
+p7zip은 7z 외에도 다양한 알고리즘과 압축방식을 지원한다. 같은 상황이 아니더라도 문제가 있으면, 7z를 사용하는 것이 좋다. 
+</p>
 </div>
 <div id="postamble" class="status">
-<div id='disqus_thread'></div>
-         <script type='text/javascript'>
-         /* * * CONFIGURATION VARIABLES * * */
-         var disqus_shortname = 'callmesanye';
-
-         /* * * DON'T EDIT BELOW THIS LINE * * */
-         (function() {
-                  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                  })();
-         </script>
-         <noscript>Please enable JavaScript to view the <a href='https://disqus.com/?ref_noscript' rel='nofollow'>comments powered by Disqus.</a></noscript>
-         <p class='author'>Author: KIM Hyeok (<a href="mailto:$(dc -e '8834889582348516636814236134029967439654154P')">$(dc -e '8834889582348516636814236134029967439654154P')</a>)</p><p>Exported At 2023-12-06 수 17:22. Created by <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3) </p>
-         <a href='#' class='back-to-top' id='fixed-back-to-top' style='display: inline;'></a>
+<p class="date">Date: 2013-06-04 화 00:00</p>
+<p class="author">Author: Your name</p>
+<p class="date">Created: 2023-12-06 수 17:21</p>
+<p class="creator">Emacs 24.3.50.3 (Org mode 8.0.3)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>
